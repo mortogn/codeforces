@@ -25,7 +25,8 @@ Better solution:
 
 Index of all the problems that I've solved to track back and learn more or refresh memory.
 
-|                      Problem                       | Rating |  Status  |         Pattern          | Mistake                                                  | Fix                      |
-| :------------------------------------------------: | :----: | :------: | :----------------------: | :------------------------------------------------------- | :----------------------- |
-| [381A Sereja and Dima](./381A_Sereja_and_Dima.cpp) |  800   | Accepted | `two pointers`, `greedy` | use `vector.erase()`                                     | use `l/r` pointer        |
-|     [118A String Task](./118A_String_Task.cpp)     |  800   | Accepted |        `strings`         | used unordered_set for such a small number of characters | use a string with `find` |
+|                      Problem                       | Rating |  Status  |         Pattern          | Mistake                                                  | Fix                                     |
+| :------------------------------------------------: | :----: | :------: | :----------------------: | :------------------------------------------------------- | :-------------------------------------- |
+| [381A Sereja and Dima](./381A_Sereja_and_Dima.cpp) |  800   | Accepted | `two pointers`, `greedy` | use `vector.erase()`                                     | use `l/r` pointer                       |
+|     [118A String Task](./118A_String_Task.cpp)     |  800   | Accepted |        `strings`         | used unordered_set for such a small number of characters | use a string with `find`                |
+|         [208A DubStep](./208A_Dubstep.cpp)         |  900   | Accepted |        `strings`         | did not use `(int)s.size()` and didn't init variable     | simply do typecasting and init variable |
