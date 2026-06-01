@@ -25,6 +25,6 @@ Better solution:
 
 Index of all the problems that I've solved to track back and learn more or refresh memory.
 
-|                      Problem                       | Rating |  Status  | Mistake              | Fix               |
-| :------------------------------------------------: | :----: | :------: | :------------------- | :---------------- |
-| [381A Sereja and Dima](./381A_Sereja_and_Dima.cpp) |  800   | Accepted | use `vector.erase()` | use `l/r` pointer |
+|                      Problem                       | Rating |  Status  |         Pattern          | Mistake              | Fix               |
+| :------------------------------------------------: | :----: | :------: | :----------------------: | :------------------- | :---------------- |
+| [381A Sereja and Dima](./381A_Sereja_and_Dima.cpp) |  800   | Accepted | `two pointers`, `greedy` | use `vector.erase()` | use `l/r` pointer |
