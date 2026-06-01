@@ -1,5 +1,17 @@
 /*
 376875958	Jun/01/2026 17:01UTC+6	amorto	381A - Sereja and Dima	C++23 (GCC 14-64, msys2)	Accepted	46 ms	0 KB
+
+
+Problem: 381A - Sereja and Dima
+Rating: 800
+Status: Solved
+Pattern: greedy, two pointers
+Mistake:
+    - Used vector erase method (high time complexity)
+    - Used vector.end() to erase instead of end() - 1 or pop_back()
+Better solution:
+    - Use left/right pointer to virtually shrink the array size
+
 */
 
 #include <bits/stdc++.h>
