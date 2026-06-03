@@ -31,3 +31,4 @@ Index of all the problems that I've solved to track back and learn more or refre
 |        [118A String Task](./118A_String_Task.cpp)        |  800   | Accepted |        `strings`         | used unordered_set for such a small number of characters | use a string with `find`                |
 |            [208A DubStep](./208A_Dubstep.cpp)            |  900   | Accepted |        `strings`         | did not use `(int)s.size()` and didn't init variable     | simply do typecasting and init variable |
 | [855A Tom Riddle's Diary](./855A_Tom_Riddle_s_Diary.cpp) |  800   | Accepted | `strings`, `brute force` | -                                                        | -                                       |
+|     [799B T-shirt Buying](./799B_T_shirt_buying.cpp)     |  1400  | Rejected |    `data structure `     | `find_if` is linear, cause TLE                           | find a better solution                  |
