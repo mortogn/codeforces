@@ -1,30 +1,29 @@
-
 /*
+377105912	Jun/03/2026 15:04UTC+6	amorto	799B - T-shirt buying	C++23 (GCC 14-64, msys2)	Time limit exceeded on test 6	3000 ms	900 KB
 
 - _Problem_: 799B - T-shirt Buying
 - _Rating_: 1400
-- _Status_: Rejected (TLE)
+- _Status_: Upsolved
 - _Pattern_: data structure
 - _Mistake_:
-        - I think find_if can not be used since it's linear
-- _Better Solution_:...
+- _Upsolved_solution_:
+    - used map and index to quickly look up prices
+    - removed find_if because that was linear
+    - used vector instead of set to get vec[i] in O(1).
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
 
-struct Price_Color
-{
-    int price;
-    int front;
-    int back;
-    int idx;
-};
-
 void solve()
 {
-    unordered_set<int> sold_idx;
+    unordered_set<int> sold_price;
+    map<int, vector<int>> color_to_prices;
+    map<int, int> color_idx_sold = {
+        {1, 0},
+        {2, 0},
+        {3, 0}};
 
     int n;
     cin >> n;
@@ -32,9 +31,6 @@ void solve()
     vector<int> prices;
     vector<int> front_colors;
     vector<int> back_colors;
-
-    // price, front, back
-    vector<Price_Color> price_colors;
 
     // take price, front_color, back_color input
     for (int i = 0; i < n * 3; i++)
@@ -63,14 +59,13 @@ void solve()
         int front_color = front_colors[i];
         int back_color = back_colors[i];
 
-        Price_Color price_color = {price, front_color, back_color, i};
-
-        price_colors.push_back(price_color);
+        color_to_prices[front_color].push_back(price);
+        color_to_prices[back_color].push_back(price);
     }
 
-    // sort with price
-    sort(price_colors.begin(), price_colors.end(), [](Price_Color price_color1, Price_Color price_color2)
-         { return price_color1.price < price_color2.price; });
+    sort(color_to_prices[1].begin(), color_to_prices[1].end());
+    sort(color_to_prices[2].begin(), color_to_prices[2].end());
+    sort(color_to_prices[3].begin(), color_to_prices[3].end());
 
     int m;
     cin >> m;
@@ -81,21 +76,36 @@ void solve()
         int choice;
         cin >> choice;
 
-        auto it = find_if(price_colors.begin(), price_colors.end(), [choice, sold_idx](Price_Color &price_color)
-                          { return (price_color.front == choice ||
-                                    price_color.back == choice) &&
-                                   !sold_idx.count(price_color.idx); });
-
-        if (it == price_colors.end())
+        // Just in case the color does not exist
+        if (!color_to_prices.count(choice))
         {
             cout << "-1" << " ";
-            continue;
+        };
+
+        int price;
+
+        while (true)
+        {
+            if (color_to_prices[choice].size() <= color_idx_sold[choice])
+            {
+                price = -1;
+                break;
+            }
+
+            price = color_to_prices[choice][color_idx_sold[choice]];
+
+            if (!sold_price.count(price))
+            {
+                sold_price.insert(price);
+                break;
+            }
+            else
+            {
+                color_idx_sold[choice] += 1;
+            }
         }
 
-        Price_Color price_color = *it;
-
-        cout << price_color.price << " ";
-        sold_idx.insert(price_color.idx);
+        cout << price << " ";
     }
 
     cout << "\n";
